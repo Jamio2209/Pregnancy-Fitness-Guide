@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ExerciseDetails"
+    android:background="#A1DDF7">
+    <LinearLayout
+        android:layout_width="@dimen/_210sdp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/details_backbtn"
+        android:layout_marginTop="@dimen/_20sdp"
+        >
+        <ImageView
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:src="@drawable/backbtn"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:layout_marginBottom="@dimen/_2sdp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Seated Yoga Pose"
+            android:textSize="@dimen/_18ssp"
+            android:layout_marginTop="@dimen/_7sdp"
+            android:layout_marginLeft="@dimen/_9sdp"
+            android:textStyle="bold"
+            android:layout_weight="80"
+            android:fontFamily="@font/baskvill"
+            android:textColor="#2B54A4"/>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="@dimen/_220sdp"
+        android:layout_height="@dimen/_260sdp"
+        android:src="@drawable/demofig"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_110sdp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_180sdp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/details_info_bg"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Instruction :"
+            android:textSize="@dimen/_23ssp"
+            android:fontFamily="@font/baskvill"
+            android:textColor="#2B54A4"
+            android:layout_weight="15 "
+            android:textStyle="bold"
+            android:layout_margin="@dimen/_15sdp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_60sdp"
+            android:textSize="@dimen/_13sdp"
+            android:text="1. Sit upright with the legs crossed
+                           \n2. Rest your hands on your knees or lap
+                           \n3. Keep your spine straight
+                           \n4. Close your eyes and breathe deeply"
+            android:textStyle="bold"
+
+            android:textColor="#2B54A4"
+            android:fontFamily="@font/baskvill"
+            android:layout_marginLeft="@dimen/_25sdp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:text="20"
+                android:textSize="@dimen/_22ssp"
+                android:textColor="#2B54A4"
+                android:fontFamily="@font/baskvill"
+                android:layout_marginLeft="@dimen/_25sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:textAlignment="center"
+                android:textStyle="bold"
+
+                android:paddingTop="@dimen/_5sdp"
+                android:background="@drawable/countbg"/>
+            <Button
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="Start"
+                android:layout_weight="50"
+                android:layout_marginLeft="@dimen/_35sdp"
+                android:textStyle="bold"
+                android:textSize="@dimen/_15sdp"
+                android:fontFamily="@font/baskvill"
+                android:textColor="@color/white"
+                android:background="@drawable/statbtnbg"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>
