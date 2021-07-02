@@ -4,7 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Dashboard">
 
+    tools:context=".Dashboard">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:id="@+id/mainframe"/>
+    <com.etebarian.meowbottomnavigation.MeowBottomNavigation
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:mbn_circleColor="#ffffff"
+        app:mbn_backgroundBottomColor="#ffffff"
+        app:mbn_countBackgroundColor="#ff6f00"
+        app:mbn_countTextColor="#ffffff"
+        android:elevation="@dimen/_15sdp"
+        app:mbn_defaultIconColor="#2B54A4"
+        app:mbn_rippleColor="#2f424242"
+        app:mbn_selectedIconColor="#2B54A4"
+        app:mbn_shadowColor="#1f212121"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/bottomnav"
+        />
 
 </RelativeLayout>
