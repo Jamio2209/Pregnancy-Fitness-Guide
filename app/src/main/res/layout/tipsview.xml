@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#4466B0"
+    android:layout_marginBottom="@dimen/_5sdp"
+    android:elevation="@dimen/_60sdp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/thumbnailcard"
+        >
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_170sdp"
+
+            android:elevation="@dimen/_1sdp"
+
+
+            android:layout_alignParentTop="true">
+            <ImageView
+                android:id="@+id/thumbnail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop" />
+
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hello World How are You"
+        android:textSize="@dimen/_20ssp"
+        android:textColor="@color/white"
+        android:layout_below="@+id/thumbnailcard"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_12sdp"
+        android:fontFamily="@font/baskvill"
+        android:id="@+id/title"
+        android:textStyle="bold"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title"
+        android:background="@drawable/contentbd">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="@dimen/_6sdp"
+
+            android:id="@+id/content"
+            android:padding="@dimen/_7sdp"
+            android:elevation="@dimen/_6sdp"
+            android:textAlignment="center"
+            android:textSize="@dimen/_13ssp"
+            android:textColor="#4466B0"/>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

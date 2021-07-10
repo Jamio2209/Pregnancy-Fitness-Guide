@@ -29,6 +29,7 @@
             android:layout_marginTop="@dimen/_7sdp"
             android:layout_marginLeft="@dimen/_9sdp"
             android:textStyle="bold"
+            android:id="@+id/titletext"
             android:layout_weight="80"
             android:fontFamily="@font/baskvill"
             android:textColor="#2B54A4"/>
@@ -38,6 +39,7 @@
         android:layout_width="@dimen/_220sdp"
         android:layout_height="@dimen/_260sdp"
         android:src="@drawable/demofig"
+        android:id="@+id/pose"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/_110sdp"/>
     <LinearLayout
@@ -70,6 +72,7 @@
 
             android:textColor="#2B54A4"
             android:fontFamily="@font/baskvill"
+            android:id="@+id/contenttext"
             android:layout_marginLeft="@dimen/_25sdp"/>
         <LinearLayout
             android:layout_width="match_parent"
