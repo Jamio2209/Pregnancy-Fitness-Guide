@@ -89,7 +89,7 @@ public class HomeFragment extends Fragment {
 
 
         // Inflate the layout for this fragment
-        DataExtraction("https://pregnancy.zerotechy.com/wp-json/wp/v2/posts");
+        DataExtraction("https://pregnancy.zerotechy.com/wp-json/wp/v2/posts?categories=2");
 
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));

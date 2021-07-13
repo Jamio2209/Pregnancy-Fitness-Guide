@@ -19,6 +19,7 @@
             android:src="@drawable/backbtn"
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_2sdp"
+            android:id="@+id/backbtn"
             android:layout_marginBottom="@dimen/_2sdp"
             />
         <TextView
@@ -85,6 +86,7 @@
                 android:text="20"
                 android:textSize="@dimen/_22ssp"
                 android:textColor="#2B54A4"
+                android:id="@+id/timertxt"
                 android:fontFamily="@font/baskvill"
                 android:layout_marginLeft="@dimen/_25sdp"
                 android:layout_marginTop="@dimen/_5sdp"
@@ -101,6 +103,7 @@
                 android:layout_weight="50"
                 android:layout_marginLeft="@dimen/_35sdp"
                 android:textStyle="bold"
+                android:id="@+id/startbtn"
                 android:textSize="@dimen/_17sdp"
                 android:fontFamily="@font/baskvill"
                 android:textColor="@color/white"

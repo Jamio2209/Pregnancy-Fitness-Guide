@@ -82,7 +82,7 @@ public class ExerciseFragment extends Fragment {
 
         View v=inflater.inflate(R.layout.fragment_exercise,container,false);
         recyclerView=(RecyclerView)v.findViewById(R.id.exercise_listview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         DataExtraction("https://pregnancy.zerotechy.com/wp-json/wp/v2/posts?categories=3");
 
@@ -123,7 +123,7 @@ public class ExerciseFragment extends Fragment {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                    recyclerView.setAdapter(new ExerciseAdapter(getActivity().getApplicationContext(),exercise));
+                    recyclerView.setAdapter(new ExerciseAdapter(getActivity(),exercise));
                 }
 
 
