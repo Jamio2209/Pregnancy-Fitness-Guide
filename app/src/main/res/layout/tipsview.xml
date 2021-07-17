@@ -11,22 +11,17 @@
         android:layout_height="wrap_content"
         android:id="@+id/thumbnailcard"
         >
-        <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/_170sdp"
 
-            android:elevation="@dimen/_1sdp"
-
-
-            android:layout_alignParentTop="true">
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/thumbnail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_170sdp"
                 android:layout_gravity="center"
-                android:scaleType="centerCrop" />
+                app:shapeAppearanceOverlay="@style/imageshape"
+                android:scaleType="fitXY"
+                android:layout_alignParentTop="true"/>
 
-        </androidx.cardview.widget.CardView>
+
     </RelativeLayout>
 
 
@@ -35,11 +30,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Hello World How are You"
-        android:textSize="@dimen/_20ssp"
+        android:textSize="@dimen/_22ssp"
         android:textColor="@color/white"
         android:layout_below="@+id/thumbnailcard"
-        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_8sdp"
         android:layout_marginLeft="@dimen/_12sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
         android:fontFamily="@font/baskvill"
         android:id="@+id/title"
         android:textStyle="bold"/>

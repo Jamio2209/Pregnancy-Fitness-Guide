@@ -36,7 +36,7 @@
             android:textStyle="bold"
             android:textColor="#2B54A4"
             android:layout_toRightOf="@+id/imgviews"
-            android:textSize="@dimen/_14ssp"
+            android:textSize="@dimen/_15ssp"
             android:id="@+id/exercise_title"
             android:layout_marginLeft="@dimen/_6sdp"
             android:fontFamily="@font/baskvill"/>

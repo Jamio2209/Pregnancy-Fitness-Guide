@@ -63,6 +63,7 @@ public class Dashboard extends AppCompatActivity {
 
     private void replace(Fragment fragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(R.anim.slide_in,R.anim.slide_out);
         transaction.replace(R.id.mainframe,fragment);
         transaction.commit();
     }

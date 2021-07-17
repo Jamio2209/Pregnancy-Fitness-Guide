@@ -70,7 +70,7 @@ public class ExerciseDetails extends AppCompatActivity {
                         mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                             @Override
                             public void onCompletion(MediaPlayer mp) {
-                                timer=new CountDownTimer(21000,1000) {
+                                timer=new CountDownTimer(20500,1000) {
                                     @Override
                                     public void onTick(long millisUntilFinished) {
                                         timertxt.setText(String.valueOf((int) (millisUntilFinished/1000)));
@@ -107,7 +107,9 @@ public class ExerciseDetails extends AppCompatActivity {
 
     }
 
-
-
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

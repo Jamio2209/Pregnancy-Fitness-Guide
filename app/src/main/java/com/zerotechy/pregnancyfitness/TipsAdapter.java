@@ -11,6 +11,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.imageview.ShapeableImageView;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -46,6 +47,7 @@ public class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.TipsViewHolder
 
         holder.content.setText(allTips.get(position).getContent().replaceAll("\\<.*?\\>", ""));
         Glide.with(holder.itemView).load(allTips.get(position).getThumb()).into(holder.thumb);
+
     }
 
     @Override
@@ -55,16 +57,15 @@ public class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.TipsViewHolder
 
     public class TipsViewHolder extends RecyclerView.ViewHolder{
 
-        ImageView thumb;
+        ShapeableImageView thumb;
         TextView title,content;
-        CardView cardView;
+
         public TipsViewHolder(View itemView){
             super(itemView);
-            thumb=(ImageView) itemView.findViewById(R.id.thumbnail);
+            thumb=(ShapeableImageView) itemView.findViewById(R.id.thumbnail);
             title=(TextView) itemView.findViewById(R.id.title);
             content=(TextView)itemView.findViewById(R.id.content);
-//            cardView=(CardView)itemView.findViewById(R.id.thumbnailcard);
-//            cardView.setBackgroundResource(R.drawable.tips_img_bg);
+
 
         }
     }
