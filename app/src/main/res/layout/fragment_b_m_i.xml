@@ -50,7 +50,7 @@
         android:background="@drawable/amountbg"
         android:fontFamily="@font/baskvill"
         android:paddingTop="@dimen/_6sdp"
-        android:text="170 cm"
+        android:text="0 cm"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="@dimen/_15ssp"
@@ -95,7 +95,7 @@
         android:background="@drawable/amountbg"
         android:fontFamily="@font/baskvill"
         android:paddingTop="@dimen/_6sdp"
-        android:text="68 kg"
+        android:text="0 kg"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="@dimen/_15ssp"
@@ -125,7 +125,7 @@
     android:layout_alignParentRight="true"
     android:elevation="@dimen/_10sdp"
     android:layout_marginEnd="@dimen/_20sdp"
-    android:layout_marginTop="@dimen/_40sdp"
+    android:layout_marginTop="@dimen/_35sdp"
     android:id="@+id/bmigobtn"/>
     <TextView
         android:layout_width="wrap_content"
@@ -138,6 +138,38 @@
         android:layout_marginTop="@dimen/_4sdp"
         android:fontFamily="@font/baskvill"
         android:textColor="#2F54A3"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your BMI"
+        android:id="@+id/yourbmi"
+        android:fontFamily="@font/baskvill"
+        android:textSize="@dimen/_15ssp"
+        android:textColor="#2F54A3"
+
+        android:layout_below="@id/bmigobtn"
+        android:layout_marginTop="@dimen/_28sdp"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:textStyle="bold"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_50ssp"
+        android:text="23.5"
+        android:fontFamily="@font/baskvill"
+        android:textColor="#2F54A3"
+        android:layout_alignParentBottom="true"
+        android:textAlignment="center"
+
+        android:layout_below="@+id/yourbmi"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:id="@+id/result"/>
+
+
+
+
 
 
 
