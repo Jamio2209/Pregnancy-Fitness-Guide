@@ -1,10 +1,15 @@
 package com.zerotechy.pregnancyfitness;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.View;
+import android.view.Window;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 
@@ -66,5 +71,34 @@ public class Dashboard extends AppCompatActivity {
         transaction.setCustomAnimations(R.anim.slide_in,R.anim.slide_out);
         transaction.replace(R.id.mainframe,fragment);
         transaction.commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder =new AlertDialog.Builder(this);
+        View v=getLayoutInflater().inflate(R.layout.alertdialog,null);
+
+        builder.setView(v);
+        AlertDialog dialog=builder.create();
+        dialog.getWindow().getAttributes().windowAnimations = R.style.SlidingDialogAnimation;
+
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        v.findViewById(R.id.yesbtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                finish();
+            }
+        });
+        v.findViewById(R.id.nobtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
     }
 }
