@@ -1,0 +1,31 @@
+package com.zerotechy.pregnancyfitness;
+
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Build;
+import android.preference.PreferenceManager;
+
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+
+public class AlertReciever  extends BroadcastReceiver {
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
+            NotificationChannel channel=new NotificationChannel("reminder","reminder", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager notificationManager=context.getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+        NotificationCompat.Builder builder=new NotificationCompat.Builder(context.getApplicationContext(),"reminder");
+        builder.setContentTitle("Pregnancy Fitness")
+                .setContentText("Exercise time! Don't forget to do your regular exercise for healthy life")
+                .setSmallIcon(R.mipmap.ic_launcher_round)
+        .setAutoCancel(true);
+        NotificationManagerCompat managerCompat=NotificationManagerCompat.from(context.getApplicationContext());
+        managerCompat.notify(1,builder.build());
+    }
+}

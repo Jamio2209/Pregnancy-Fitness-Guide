@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/exercise_list_bg"
+    tools:context=".Reminder">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_250sdp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:elevation="@dimen/_30sdp"
+            android:layout_margin="@dimen/_15sdp"
+            android:layout_weight="40">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Notification"
+
+                android:textSize="@dimen/_17ssp"
+                android:fontFamily="@font/baskvill"
+                android:textColor="#2F54A3"
+                android:textStyle="bold"
+                android:layout_weight="50"/>
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_weight="50"
+                android:checked="false"
+                android:id="@+id/notificationswitch"/>
+
+        </LinearLayout>
+       <Button
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/_40sdp"
+           android:text="Set Time"
+           android:background="@drawable/setitmebtn"
+           android:layout_margin="@dimen/_40sdp"
+           android:textStyle="bold"
+           android:id="@+id/settime"/>
+    </LinearLayout>
+
+</RelativeLayout>
