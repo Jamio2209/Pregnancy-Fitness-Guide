@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +38,7 @@ public class HomeFragment extends Fragment {
     String TAG="TAG";
     RecyclerView recyclerView;
     List<Tips> tips=new ArrayList<>();
+    ProgressBar progressBar;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -83,7 +85,9 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
 
          View v=inflater.inflate(R.layout.fragment_home,container,false);
+         progressBar=(ProgressBar)v.findViewById(R.id.progress_circular);
          recyclerView=(RecyclerView)v.findViewById(R.id.recyclerview);
+
 
 
 
@@ -112,6 +116,7 @@ public class HomeFragment extends Fragment {
                 for(int i=0;i<response.length();i++){
                     try {
                         Tips t=new Tips();
+                        Tips a=new Tips();
                         JSONObject objectData=response.getJSONObject(i);
                         JSONObject titleobject=objectData.getJSONObject("title");
 
@@ -127,8 +132,10 @@ public class HomeFragment extends Fragment {
 //                        t.setCategory((String) obnjectData.getJSONArray("categories").get(0).toString());
 //                        Toast.makeText(getActivity().getApplicationContext(), t.getCategory(), Toast.LENGTH_SHORT).show();
 
-                        tips.add(t);
+
                         Log.d("Date",response.toString());
+
+                        tips.add(t);
 
 
 
@@ -137,6 +144,7 @@ public class HomeFragment extends Fragment {
                         e.printStackTrace();
                     }
                     recyclerView.setAdapter(new TipsAdapter(tips));
+                    progressBar.setVisibility(View.GONE);
                 }
 
 
@@ -147,7 +155,7 @@ public class HomeFragment extends Fragment {
                 //Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
+            queue.getCache().clear();
         queue.add(request);
 
 

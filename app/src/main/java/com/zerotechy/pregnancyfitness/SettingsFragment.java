@@ -1,7 +1,13 @@
 package com.zerotechy.pregnancyfitness;
 
+import android.app.AlertDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.DialogFragment;
@@ -10,8 +16,21 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TimePicker;
+import android.widget.Toast;
+
+import com.facebook.ads.Ad;
+import com.facebook.ads.AdError;
+import com.facebook.ads.AdSize;
+import com.facebook.ads.AdView;
+import com.facebook.ads.AudienceNetworkAds;
+import com.facebook.ads.InterstitialAd;
+import com.facebook.ads.InterstitialAdListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,7 +38,12 @@ import android.widget.TimePicker;
  * create an instance of this fragment.
  */
 public class SettingsFragment extends Fragment{
-    ImageView privacy,reminder,rate,about;
+    ImageView privacy,reminder,rate,about,difficulty;
+    RadioGroup radioGroup;
+    RadioButton radioButton;
+    SharedPreferences sharedPreferences;
+    private InterstitialAd interstitialAd;
+    private AdView adView;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -66,12 +90,71 @@ public class SettingsFragment extends Fragment{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v=inflater.inflate(R.layout.fragment_settings, container, false);
-        privacy=(ImageView)v.findViewById(R.id.policybtn);
+        difficulty=(ImageView)v.findViewById(R.id.difficultybtn);
         reminder=(ImageView)v.findViewById(R.id.reminderbtn);
         rate=(ImageView)v.findViewById(R.id.ratingbtn);
         about=(ImageView)v.findViewById(R.id.aboutbtn);
+        privacy=(ImageView) v.findViewById(R.id.privacybtn);
+        AudienceNetworkAds.initialize(getContext());
+        interstitialAd = new InterstitialAd(getContext(), utils.getInterstitialAdID());
 
 
+        InterstitialAdListener interstitialAdListener = new InterstitialAdListener() {
+
+
+            @Override
+            public void onInterstitialDisplayed(Ad ad) {
+                // Interstitial ad displayed callback
+
+            }
+
+            @Override
+            public void onInterstitialDismissed(Ad ad) {
+                // Interstitial dismissed callback
+
+            }
+
+
+            @Override
+            public void onError(Ad ad, AdError adError) {
+                Toast.makeText(getContext(), adError.getErrorMessage(), Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onAdLoaded(Ad ad) {
+                // Interstitial ad is loaded and ready to be displayed
+
+                // Show the ad
+                interstitialAd.show();
+            }
+
+            @Override
+            public void onAdClicked(Ad ad) {
+                // Ad clicked callback
+
+            }
+
+            @Override
+            public void onLoggingImpression(Ad ad) {
+                // Ad impression logged callback
+
+            }
+        };
+
+        // For auto play video ads, it's recommended to load the ad
+        // at least 30 seconds before it is shown
+        interstitialAd.loadAd(
+                interstitialAd.buildLoadAdConfig()
+                        .withAdListener(interstitialAdListener)
+                        .build());
+
+            rate.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final String appPackageName = getActivity().getPackageName();
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+                }
+            });
         reminder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,8 +163,97 @@ public class SettingsFragment extends Fragment{
             }
         });
 
+        difficulty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                difficulty();
+            }
+        });
+
+        privacy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(),Policyview.class));
+            }
+        });
+
+
+
+
+//        adView = new AdView(getContext(), utils.getAdId(), AdSize.BANNER_HEIGHT_50);
+//
+//// Find the Ad Container
+//        LinearLayout adContainer = (LinearLayout) v.findViewById(R.id.banner_container);
+//
+//// Add the ad view to your activity layout
+//        adContainer.addView(adView);
+//
+//// Request an ad
+//        adView.loadAd();
+
+
 
         return v;
+    }
+    private void difficulty(){
+        AlertDialog.Builder builder=new AlertDialog.Builder(getContext());
+        View x=getLayoutInflater().inflate(R.layout.dificulty,null);
+        builder.setView(x);
+        AlertDialog dialog=builder.create();
+        dialog.getWindow().getAttributes().windowAnimations = R.style.SlidingDialogAnimation;
+
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        radioGroup=(RadioGroup)x.findViewById(R.id.btngrp);
+        sharedPreferences=getActivity().getSharedPreferences("Difficulty", Context.MODE_PRIVATE);
+        int status=sharedPreferences.getInt("value",20);
+        switch (status){
+            case 20:
+                radioGroup.check(R.id.Easy);
+                break;
+            case 40:
+                radioGroup.check(R.id.Medium);
+                break;
+            case 60:
+                radioGroup.check(R.id.Hard);
+                break;
+
+        }
+
+        x.findViewById(R.id.ok).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               int btnid =radioGroup.getCheckedRadioButtonId();
+               radioButton=x.findViewById(btnid);
+                SharedPreferences.Editor editor=getActivity().getSharedPreferences("Difficulty",Context.MODE_PRIVATE).edit();
+
+                if(btnid==R.id.Easy){
+
+                    editor.putInt("value",20);
+                }
+                if(btnid==R.id.Medium){
+
+                    editor.putInt("value",40);
+                }
+                if(btnid==R.id.Hard){
+                    editor.putInt("value",60);
+                }
+                editor.apply();
+                Toast.makeText(getContext(),"Difficulty was set to "+radioButton.getText()+" mode.",Toast.LENGTH_LONG).show();
+
+                dialog.dismiss();
+
+            }
+        });
+        x.findViewById(R.id.cancel).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+
+            }
+        });
+        dialog.show();
+
+
     }
 
 

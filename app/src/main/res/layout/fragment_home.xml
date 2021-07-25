@@ -5,6 +5,16 @@
     android:layout_height="match_parent"
     tools:context=".HomeFragment"
     >
+<ProgressBar
+    android:layout_width="@dimen/_90sdp"
+    android:layout_height="@dimen/_90sdp"
+    android:id="@+id/progress_circular"
+    android:layout_gravity="center"
+    android:fadingEdge="vertical"
+    android:indeterminateTint="#2F54A3"
+    android:elevation="@dimen/_50sdp"
+
+    />
 
     <!-- TODO: Update blank fragment layout -->
    <androidx.recyclerview.widget.RecyclerView

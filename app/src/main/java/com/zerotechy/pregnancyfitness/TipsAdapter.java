@@ -4,22 +4,29 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+//import com.facebook.ads.AdSize;
+//import com.facebook.ads.AdView;
+import com.facebook.ads.AdSize;
+import com.facebook.ads.AdView;
 import com.google.android.material.imageview.ShapeableImageView;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.TipsViewHolder> {
+public class TipsAdapter extends RecyclerView.Adapter {
 
     List<Tips> allTips;
+
     public TipsAdapter(List<Tips> allTips) {
         this.allTips = allTips;
     }
@@ -30,23 +37,43 @@ public class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.TipsViewHolder
     @NonNull
     @NotNull
     @Override
-    public TipsViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-    LayoutInflater inflater=LayoutInflater.from(parent.getContext());
-    View v=inflater.inflate(R.layout.tipsview,parent,false);
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater=LayoutInflater.from(parent.getContext());
+        View v;
 
-        return new TipsViewHolder(v);
+
+                v=inflater.inflate(R.layout.tipsview,parent,false);
+                return new TipsViewHolder(v);
+
+    
+    
+
+
     }
 
 
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull TipsViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull @NotNull RecyclerView.ViewHolder holder, int position) {
 
-        holder.title.setText(allTips.get(position).getTitle());
-       String text=allTips.get(position).getContent();
+        int viewType=(getItemViewType(position));
 
-        holder.content.setText(allTips.get(position).getContent().replaceAll("\\<.*?\\>", ""));
-        Glide.with(holder.itemView).load(allTips.get(position).getThumb()).into(holder.thumb);
+                TipsViewHolder tipsViewHolder=(TipsViewHolder) holder;
+                tipsViewHolder.title.setText(allTips.get(position).getTitle());
+                String text=allTips.get(position).getContent();
+                tipsViewHolder.content.setText(allTips.get(position).getContent().replaceAll("\\<.*?\\>", ""));
+                Glide.with(tipsViewHolder.itemView).load(allTips.get(position).getThumb()).into(tipsViewHolder.thumb);
+
+
+
+
+
+
+//        holder.title.setText(allTips.get(position).getTitle());
+//       String text=allTips.get(position).getContent();
+//
+//        holder.content.setText(allTips.get(position).getContent().replaceAll("\\<.*?\\>", ""));
+//        Glide.with(holder.itemView).load(allTips.get(position).getThumb()).into(holder.thumb);
 
     }
 
@@ -69,4 +96,7 @@ public class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.TipsViewHolder
 
         }
     }
+
+
+
 }

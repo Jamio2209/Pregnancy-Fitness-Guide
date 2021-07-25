@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -84,6 +85,7 @@ public class ExerciseFragment extends Fragment {
         View v=inflater.inflate(R.layout.fragment_exercise,container,false);
         recyclerView=(RecyclerView)v.findViewById(R.id.exercise_listview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
 
         DataExtraction("https://pregnancy.zerotechy.com/wp-json/wp/v2/posts?categories=3");
 

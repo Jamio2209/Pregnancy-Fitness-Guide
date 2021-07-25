@@ -107,13 +107,5 @@ public class Dashboard extends AppCompatActivity {
     }
 
 
-    public void CreateNotificationChannel(){
-        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
-            NotificationChannel channel=new NotificationChannel("reminder","reminder", NotificationManager.IMPORTANCE_DEFAULT);
-            NotificationManager notificationManager=getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel);
-        }
 
-
-    }
 }

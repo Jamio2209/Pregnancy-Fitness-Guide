@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.inputmethod.InputConnectionCompat;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -12,9 +13,12 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.facebook.ads.AdSize;
+import com.facebook.ads.AdView;
 
 import java.io.IOException;
 
@@ -30,6 +34,8 @@ public class ExerciseDetails extends AppCompatActivity {
     Boolean started=true;
     private int second=20;
     CountDownTimer timer;
+    SharedPreferences sharedPreferences;
+    private AdView adView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +51,20 @@ public class ExerciseDetails extends AppCompatActivity {
         backbtn=(ImageView)findViewById(R.id.backbtn);
         timertxt=(TextView)findViewById(R.id.timertxt);
         startbtn=(Button)findViewById(R.id.startbtn);
+        sharedPreferences=getSharedPreferences("Difficulty",MODE_PRIVATE);
+        timertxt.setText(String.valueOf(sharedPreferences.getInt("value",20)));
+
+
+        adView = new AdView(this, utils.getAdId(), AdSize.BANNER_HEIGHT_50);
+
+// Find the Ad Container
+        LinearLayout adContainer = (LinearLayout) findViewById(R.id.banner_container);
+
+// Add the ad view to your activity layout
+        adContainer.addView(adView);
+
+// Request an ad
+        adView.loadAd();
 
 
         backbtn.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +90,7 @@ public class ExerciseDetails extends AppCompatActivity {
                         mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                             @Override
                             public void onCompletion(MediaPlayer mp) {
-                                timer=new CountDownTimer(20500,1000) {
+                                timer=new CountDownTimer(sharedPreferences.getInt("value",20)*1000+500,1000) {
                                     @Override
                                     public void onTick(long millisUntilFinished) {
                                         timertxt.setText(String.valueOf((int) (millisUntilFinished/1000)));
@@ -98,7 +118,7 @@ public class ExerciseDetails extends AppCompatActivity {
                     timer.cancel();
                     mediaPlayer.stop();
                     startbtn.setText("Start");
-                    timertxt.setText("20");
+                    timertxt.setText(String.valueOf(sharedPreferences.getInt("value",20)));
                     started=true;
                 }
 
