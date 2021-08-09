@@ -12,7 +12,8 @@
     android:backgroundTint="#98C5E9">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/mainlayout">
         <androidx.cardview.widget.CardView
             android:layout_width="@dimen/_70sdp"
             android:layout_height="@dimen/_70sdp"
@@ -25,30 +26,33 @@
                 android:layout_height="@dimen/_70sdp"
                 android:src="@drawable/demofig"
                 android:id="@+id/practiceicon"
+
                 android:scaleType="centerInside"/>
         </androidx.cardview.widget.CardView>
+
         <TextView
+            android:id="@+id/exercise_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/_6sdp"
+            android:layout_toRightOf="@+id/imgviews"
+            android:fontFamily="@font/baskvill"
             android:text="Seated Side Band"
             android:textAlignment="center"
-            android:textStyle="bold"
             android:textColor="#2B54A4"
-            android:layout_toRightOf="@+id/imgviews"
             android:textSize="@dimen/_15ssp"
-            android:id="@+id/exercise_title"
-            android:layout_marginLeft="@dimen/_6sdp"
-            android:fontFamily="@font/baskvill"/>
+            android:textStyle="bold" />
 
         <ImageView
+            android:id="@+id/btnclick"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="@dimen/_40sdp"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/exercise_title"
-            android:layout_marginLeft="@dimen/_12sdp"
-            android:background="@drawable/openbtn"
-            android:id="@+id/btnclick"/>
+
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:background="@drawable/openbtn" />
 
 
 

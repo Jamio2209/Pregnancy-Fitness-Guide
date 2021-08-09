@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
+import android.media.RingtoneManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -27,7 +28,7 @@ import javax.microedition.khronos.opengles.GL;
 public class ExerciseDetails extends AppCompatActivity {
 
 
-    private MediaPlayer mediaPlayer;
+    private MediaPlayer mediaPlayer,endplayer;
     TextView titletext,contenttext,timertxt;
     ImageView thumb,backbtn;
     Button startbtn;
@@ -67,6 +68,7 @@ public class ExerciseDetails extends AppCompatActivity {
         adView.loadAd();
 
 
+
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,6 +83,7 @@ public class ExerciseDetails extends AppCompatActivity {
                     started=false;
                     startbtn.setText("Stop");
                     mediaPlayer=new MediaPlayer();
+                    endplayer=new MediaPlayer();
                     AssetFileDescriptor fileDescriptor=getResources().openRawResourceFd(R.raw.countsound);
                     try {
                         mediaPlayer.setDataSource(fileDescriptor.getFileDescriptor(),fileDescriptor.getStartOffset(),fileDescriptor.getLength());
@@ -101,6 +104,14 @@ public class ExerciseDetails extends AppCompatActivity {
                                         startbtn.setText("Start");
                                         started=true;
                                         timertxt.setText("20");
+                                        try {
+                                            AssetFileDescriptor nfileDescriptor=getResources().openRawResourceFd(R.raw.endsound);
+                                            endplayer.setDataSource(nfileDescriptor.getFileDescriptor(),nfileDescriptor.getStartOffset(),nfileDescriptor.getLength());
+                                            endplayer.prepare();
+                                            endplayer.start();
+                                        } catch (IOException e) {
+                                            e.printStackTrace();
+                                        }
 
                                     }
                                 }.start();
@@ -120,6 +131,7 @@ public class ExerciseDetails extends AppCompatActivity {
                     startbtn.setText("Start");
                     timertxt.setText(String.valueOf(sharedPreferences.getInt("value",20)));
                     started=true;
+
                 }
 
             }

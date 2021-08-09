@@ -2,4 +2,5 @@
     <string name="app_name">Pregnancy Fitness Guide</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="about">This is a wonderful app for pregnant ladies to stay fit. This doesn’t require any equipment, you can stay fit without going outside. A lot of yoga exercises with down-clock timer are there to practice your daily activities. Some generous tips and advices are there too. Then there is an option to check your BMI. It has a reminder option to maintain your activities. Tips and advices will be uploaded occasionally to keep you updated. Thank you!</string>
 </resources>

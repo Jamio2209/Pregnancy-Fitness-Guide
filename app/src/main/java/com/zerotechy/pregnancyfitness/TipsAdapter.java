@@ -56,7 +56,7 @@ public class TipsAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull @NotNull RecyclerView.ViewHolder holder, int position) {
 
-        int viewType=(getItemViewType(position));
+
 
                 TipsViewHolder tipsViewHolder=(TipsViewHolder) holder;
                 tipsViewHolder.title.setText(allTips.get(position).getTitle());

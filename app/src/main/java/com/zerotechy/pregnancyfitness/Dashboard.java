@@ -1,21 +1,25 @@
 package com.zerotechy.pregnancyfitness;
 
-import androidx.annotation.RequiresApi;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
+
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
+
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
+import android.widget.LinearLayout;
+
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
+import com.facebook.ads.AdSize;
+import com.facebook.ads.AdView;
+import com.sanojpunchihewa.updatemanager.UpdateManager;
+import com.sanojpunchihewa.updatemanager.UpdateManagerConstant;
 
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
@@ -23,10 +27,29 @@ import kotlin.jvm.functions.Function1;
 public class Dashboard extends AppCompatActivity {
 
     private MeowBottomNavigation bnv_Main;
+    UpdateManager updateManager;
+    private AdView adView;
+    View v;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+        updateManager=UpdateManager.Builder(this).mode(UpdateManagerConstant.FLEXIBLE);
+        updateManager.start();
+
+     v=getLayoutInflater().inflate(R.layout.alertdialog,null);
+
+        adView = new AdView(this, utils.getAdId(), AdSize.BANNER_HEIGHT_90);
+
+// Find the Ad Container
+        LinearLayout adContainer = (LinearLayout) v.findViewById(R.id.banner_container);
+
+// Add the ad view to your activity layout
+        adContainer.addView(adView);
+
+// Request an ad
+        adView.loadAd();
+
 
         bnv_Main=findViewById(R.id.bottomnav);
         bnv_Main.add(new MeowBottomNavigation.Model(1,R.drawable.ic_home));
@@ -80,13 +103,14 @@ public class Dashboard extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         AlertDialog.Builder builder =new AlertDialog.Builder(this);
-        View v=getLayoutInflater().inflate(R.layout.alertdialog,null);
+
 
         builder.setView(v);
         AlertDialog dialog=builder.create();
         dialog.getWindow().getAttributes().windowAnimations = R.style.SlidingDialogAnimation;
 
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
 
         v.findViewById(R.id.yesbtn).setOnClickListener(new View.OnClickListener() {
             @Override

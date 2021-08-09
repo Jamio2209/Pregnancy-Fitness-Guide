@@ -27,7 +27,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -92,7 +94,7 @@ public class HomeFragment extends Fragment {
 
 
         // Inflate the layout for this fragment
-        DataExtraction("https://pregnancy.zerotechy.com/wp-json/wp/v2/posts?categories=2");
+        DataExtraction(utils.getURL());
 
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
@@ -108,57 +110,73 @@ public class HomeFragment extends Fragment {
     }
 
     public void DataExtraction(String url){
-        RequestQueue queue= Volley.newRequestQueue(getActivity().getApplicationContext());
-        JsonArrayRequest request=new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+        Thread thread=new Thread(){
             @Override
-            public void onResponse(JSONArray response) {
+            public void run() {
+                RequestQueue queue= Volley.newRequestQueue(getActivity().getApplicationContext());
+                JsonArrayRequest request=new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
 
-                for(int i=0;i<response.length();i++){
-                    try {
-                        Tips t=new Tips();
-                        Tips a=new Tips();
-                        JSONObject objectData=response.getJSONObject(i);
-                        JSONObject titleobject=objectData.getJSONObject("title");
+                        for(int i=0;i<response.length();i++){
+                            try {
+                                Tips t=new Tips();
+                                Tips a=new Tips();
+                                JSONObject objectData=response.getJSONObject(i);
+                                JSONObject titleobject=objectData.getJSONObject("title");
 
-                        t.setTitle(titleobject.getString("rendered"));
+                                t.setTitle(titleobject.getString("rendered"));
 
 
-                        JSONObject contentobject=objectData.getJSONObject("content");
-                        t.setContent(contentobject.getString("rendered"));
+                                JSONObject contentobject=objectData.getJSONObject("content");
+                                t.setContent(contentobject.getString("rendered"));
 
-                        t.setThumb(objectData.getString("jetpack_featured_media_url"));
-                        t.setCategory(objectData.getString("date"));
+                                t.setThumb(objectData.getString("jetpack_featured_media_url"));
+                                t.setCategory(objectData.getString("date"));
 
 //                        t.setCategory((String) obnjectData.getJSONArray("categories").get(0).toString());
 //                        Toast.makeText(getActivity().getApplicationContext(), t.getCategory(), Toast.LENGTH_SHORT).show();
 
 
-                        Log.d("Date",response.toString());
+                                Log.d("Date",response.toString());
 
-                        tips.add(t);
-
-
+                                tips.add(t);
 
 
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            recyclerView.setAdapter(new TipsAdapter(tips));
+                            progressBar.setVisibility(View.GONE);
+                            queue.getCache().clear();
+                        }
+
+
                     }
-                    recyclerView.setAdapter(new TipsAdapter(tips));
-                    progressBar.setVisibility(View.GONE);
-                }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        //Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+
+
+                queue.add(request);
 
 
             }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                //Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-            queue.getCache().clear();
-        queue.add(request);
+        };
+
+        thread.start();
+
+
 
 
 
     }
+
+
 }

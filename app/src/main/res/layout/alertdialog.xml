@@ -16,13 +16,23 @@
         android:layout_gravity="center"
         android:background="#C8E0F2"
         >
+
         <ImageView
+            android:id="@+id/icon"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="@dimen/_40sdp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/exiticon"
-            android:layout_marginTop="@dimen/_35sdp"
-            android:id="@+id/icon"/>
+            android:layout_marginTop="@dimen/_20sdp"
+            android:src="@drawable/exiticon" />
+        <LinearLayout
+            android:id="@+id/banner_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/icon"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -30,9 +40,9 @@
             android:textColor="#2F54A3"
             android:text="Are you sure you want to quit? "
             android:fontFamily="@font/baskvill"
-            android:layout_below="@+id/icon"
+            android:layout_below="@+id/banner_container"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:textSize="@dimen/_15ssp"
             android:textStyle="bold"
             android:id="@+id/question"/>
@@ -45,15 +55,16 @@
             android:layout_marginTop="@dimen/_10sdp"
 
             android:id="@+id/nobtn"/>
+
         <ImageView
+            android:id="@+id/yesbtn"
             android:layout_width="@dimen/_68sdp"
             android:layout_height="@dimen/_36sdp"
-            android:id="@+id/yesbtn"
-            android:layout_toRightOf="@+id/nobtn"
             android:layout_below="@+id/question"
+            android:layout_marginLeft="@dimen/_50sdp"
             android:layout_marginTop="@dimen/_10sdp"
-            android:layout_marginLeft="@dimen/_40sdp"
-            android:src="@drawable/yesbtn"/>
+            android:layout_toRightOf="@+id/nobtn"
+            android:src="@drawable/yesbtn" />
 
 
     </RelativeLayout>

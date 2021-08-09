@@ -203,7 +203,7 @@ public class BMIFragment extends Fragment {
                             @Override
                             public void onError(Ad ad, AdError adError) {
                                 // Ad error callback
-                                Toast.makeText(getContext(), adError.getErrorMessage(), Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(getContext(), adError.getErrorMessage(), Toast.LENGTH_SHORT).show();
                             }
 
 

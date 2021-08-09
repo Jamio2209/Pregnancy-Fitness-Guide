@@ -22,18 +22,18 @@ public class AlertReciever  extends BroadcastReceiver {
             NotificationManager notificationManager=context.getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }
-        Intent myIntent = new Intent(context, Dashboard.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(
-                context,
-                0,
-                myIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
+//        Intent myIntent = new Intent(context, Dashboard.class);
+//        PendingIntent pendingIntent = PendingIntent.getActivity(
+//                context,
+//                0,
+//                myIntent,
+//                PendingIntent.FLAG_UPDATE_CURRENT);
         NotificationCompat.Builder builder=new NotificationCompat.Builder(context.getApplicationContext(),"reminder");
         builder.setContentTitle("Pregnancy Fitness")
-                .setContentText("Exercise time! Don't forget to do your regular exercise for healthy life")
+                .setContentText("Exercise time! Don't forget to do your regular exercise.")
                 .setSmallIcon(R.mipmap.ic_launcher_round)
-                .setContentIntent(pendingIntent).setVibrate(new long[]{1000,1000})
-                .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+
+
         .setAutoCancel(true);
         NotificationManagerCompat managerCompat=NotificationManagerCompat.from(context.getApplicationContext());
         managerCompat.notify(1,builder.build());

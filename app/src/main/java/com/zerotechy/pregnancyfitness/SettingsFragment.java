@@ -43,7 +43,7 @@ public class SettingsFragment extends Fragment{
     RadioButton radioButton;
     SharedPreferences sharedPreferences;
     private InterstitialAd interstitialAd;
-    private AdView adView;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -96,57 +96,72 @@ public class SettingsFragment extends Fragment{
         about=(ImageView)v.findViewById(R.id.aboutbtn);
         privacy=(ImageView) v.findViewById(R.id.privacybtn);
         AudienceNetworkAds.initialize(getContext());
-        interstitialAd = new InterstitialAd(getContext(), utils.getInterstitialAdID());
 
 
-        InterstitialAdListener interstitialAdListener = new InterstitialAdListener() {
-
-
+        about.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onInterstitialDisplayed(Ad ad) {
-                // Interstitial ad displayed callback
-
+            public void onClick(View v) {
+              startActivity(new Intent(getContext(),About.class));
             }
+        });
 
+        Thread thread=new Thread(){
             @Override
-            public void onInterstitialDismissed(Ad ad) {
-                // Interstitial dismissed callback
-
-            }
+            public void run() {
+                interstitialAd = new InterstitialAd(getContext(), utils.getInterstitialAdID());
 
 
-            @Override
-            public void onError(Ad ad, AdError adError) {
-                Toast.makeText(getContext(), adError.getErrorMessage(), Toast.LENGTH_LONG).show();
-            }
+                InterstitialAdListener interstitialAdListener = new InterstitialAdListener() {
 
-            @Override
-            public void onAdLoaded(Ad ad) {
-                // Interstitial ad is loaded and ready to be displayed
 
-                // Show the ad
-                interstitialAd.show();
-            }
+                    @Override
+                    public void onInterstitialDisplayed(Ad ad) {
+                        // Interstitial ad displayed callback
 
-            @Override
-            public void onAdClicked(Ad ad) {
-                // Ad clicked callback
+                    }
 
-            }
+                    @Override
+                    public void onInterstitialDismissed(Ad ad) {
+                        // Interstitial dismissed callback
 
-            @Override
-            public void onLoggingImpression(Ad ad) {
-                // Ad impression logged callback
+                    }
 
+
+                    @Override
+                    public void onError(Ad ad, AdError adError) {
+
+                    }
+
+                    @Override
+                    public void onAdLoaded(Ad ad) {
+                        // Interstitial ad is loaded and ready to be displayed
+
+                        // Show the ad
+                        interstitialAd.show();
+                    }
+
+                    @Override
+                    public void onAdClicked(Ad ad) {
+                        // Ad clicked callback
+
+                    }
+
+                    @Override
+                    public void onLoggingImpression(Ad ad) {
+                        // Ad impression logged callback
+
+                    }
+                };
+
+                // For auto play video ads, it's recommended to load the ad
+                // at least 30 seconds before it is shown
+                interstitialAd.loadAd(
+                        interstitialAd.buildLoadAdConfig()
+                                .withAdListener(interstitialAdListener)
+                                .build());
             }
         };
 
-        // For auto play video ads, it's recommended to load the ad
-        // at least 30 seconds before it is shown
-        interstitialAd.loadAd(
-                interstitialAd.buildLoadAdConfig()
-                        .withAdListener(interstitialAdListener)
-                        .build());
 
             rate.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -159,6 +174,7 @@ public class SettingsFragment extends Fragment{
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(),Reminder.class));
+
 
             }
         });

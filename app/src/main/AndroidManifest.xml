@@ -16,7 +16,8 @@
         android:screenOrientation="nosensor"
         android:supportsRtl="true"
         android:theme="@style/Theme.Intro">
-        <activity android:name=".Policyview"></activity>
+        <activity android:name=".About"></activity>
+        <activity android:name=".Policyview" />
         <activity android:name=".Reminder" />
         <activity android:name=".Dashboard" />
         <activity android:name=".ExerciseDetails" />
@@ -28,7 +29,9 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".AlertReciever" />
+        <receiver
+            android:name=".AlertReciever"
+            android:enabled="true" />
     </application>
 
 </manifest>

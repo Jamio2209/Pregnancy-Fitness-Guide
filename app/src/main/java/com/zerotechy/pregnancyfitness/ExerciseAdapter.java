@@ -6,8 +6,11 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -40,6 +43,7 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull ExerciseViewHolder holder, int position) {
+        holder.relativeLayout.setAnimation(AnimationUtils.loadAnimation(holder.itemView.getContext(),R.anim.fade_out));
         holder.title.setText(allexercise.get(position).getTitle());
         Glide.with(holder.itemView).load(allexercise.get(position).getThumb()).into(holder.thumb);
         holder.click.setOnClickListener(new View.OnClickListener() {
@@ -66,11 +70,13 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
         ImageView thumb;
         TextView title;
         ImageView click;
+        RelativeLayout relativeLayout;
         public ExerciseViewHolder(View itemview){
             super(itemview);
             thumb=(ImageView)itemview.findViewById(R.id.practiceicon);
             title=(TextView)itemview.findViewById(R.id.exercise_title);
             click=(ImageView)itemview.findViewById(R.id.btnclick);
+            relativeLayout=(RelativeLayout)itemview.findViewById(R.id.mainlayout);
         }
 
     }
