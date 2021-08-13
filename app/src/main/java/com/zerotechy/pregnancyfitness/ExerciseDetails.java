@@ -44,7 +44,12 @@ public class ExerciseDetails extends AppCompatActivity {
         Intent intent = getIntent();
 
         titletext=(TextView)findViewById(R.id.exercise_title);
-        titletext.setText(intent.getStringExtra("title"));
+        try {
+            titletext.setText(intent.getStringExtra("title"));
+        }catch (Exception e){
+
+        }
+
         thumb=(ImageView)findViewById(R.id.pose);
         Glide.with(this).load(intent.getStringExtra("img")).into(thumb);
         contenttext=(TextView)findViewById(R.id.contenttext);
