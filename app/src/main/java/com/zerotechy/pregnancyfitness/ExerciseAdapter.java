@@ -1,20 +1,21 @@
 package com.zerotechy.pregnancyfitness;
 
+
 import android.content.Context;
 import android.content.Intent;
-import android.util.AttributeSet;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
+
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
+
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -43,12 +44,18 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull ExerciseViewHolder holder, int position) {
-        holder.relativeLayout.setAnimation(AnimationUtils.loadAnimation(holder.itemView.getContext(),R.anim.fade_out));
+
+//        holder.relativeLayout.animate().translationX(-2000).start();
+
         holder.title.setText(allexercise.get(position).getTitle());
         Glide.with(holder.itemView).load(allexercise.get(position).getThumb()).into(holder.thumb);
-        holder.click.setOnClickListener(new View.OnClickListener() {
+        holder.relativeLayout.animate().translationX(-1).setDuration(1000).start();
+        holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+
 
                 Intent i=new Intent(v.getContext(),ExerciseDetails.class);
                 i.putExtra("title",allexercise.get(position).getTitle());
@@ -73,10 +80,11 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
         RelativeLayout relativeLayout;
         public ExerciseViewHolder(View itemview){
             super(itemview);
-            thumb=(ImageView)itemview.findViewById(R.id.practiceicon);
+            thumb=(ImageView)itemview.findViewById(R.id.pose);
             title=(TextView)itemview.findViewById(R.id.exercise_title);
             click=(ImageView)itemview.findViewById(R.id.btnclick);
             relativeLayout=(RelativeLayout)itemview.findViewById(R.id.mainlayout);
+
         }
 
     }

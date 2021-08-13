@@ -13,6 +13,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:translationX="@dimen/_270sdp"
         android:id="@+id/mainlayout">
         <androidx.cardview.widget.CardView
             android:layout_width="@dimen/_70sdp"
@@ -25,7 +26,8 @@
                 android:layout_width="@dimen/_70sdp"
                 android:layout_height="@dimen/_70sdp"
                 android:src="@drawable/demofig"
-                android:id="@+id/practiceicon"
+                android:transitionName="thumb"
+                android:id="@+id/pose"
 
                 android:scaleType="centerInside"/>
         </androidx.cardview.widget.CardView>
@@ -42,7 +44,8 @@
             android:textAlignment="center"
             android:textColor="#2B54A4"
             android:textSize="@dimen/_15ssp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:transitionName="title" />
 
         <ImageView
             android:id="@+id/btnclick"

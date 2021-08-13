@@ -7,7 +7,7 @@
     tools:context=".SettingsFragment">
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_410sdp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_95sdp">
         <LinearLayout
             android:layout_width="match_parent"

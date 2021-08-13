@@ -37,18 +37,7 @@ public class Dashboard extends AppCompatActivity {
         updateManager=UpdateManager.Builder(this).mode(UpdateManagerConstant.FLEXIBLE);
         updateManager.start();
 
-     v=getLayoutInflater().inflate(R.layout.alertdialog,null);
 
-        adView = new AdView(this, utils.getAdId(), AdSize.BANNER_HEIGHT_90);
-
-// Find the Ad Container
-        LinearLayout adContainer = (LinearLayout) v.findViewById(R.id.banner_container);
-
-// Add the ad view to your activity layout
-        adContainer.addView(adView);
-
-// Request an ad
-        adView.loadAd();
 
 
         bnv_Main=findViewById(R.id.bottomnav);
@@ -103,7 +92,18 @@ public class Dashboard extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         AlertDialog.Builder builder =new AlertDialog.Builder(this);
+        v=getLayoutInflater().inflate(R.layout.alertdialog,null);
 
+        adView = new AdView(this, utils.getAdId(), AdSize.BANNER_HEIGHT_90);
+
+// Find the Ad Container
+        LinearLayout adContainer = (LinearLayout) v.findViewById(R.id.banner_container);
+
+// Add the ad view to your activity layout
+        adContainer.addView(adView);
+
+// Request an ad
+        adView.loadAd();
 
         builder.setView(v);
         AlertDialog dialog=builder.create();
@@ -124,6 +124,8 @@ public class Dashboard extends AppCompatActivity {
             public void onClick(View v) {
 
                 dialog.dismiss();
+
+
             }
         });
 

@@ -43,7 +43,7 @@ public class ExerciseDetails extends AppCompatActivity {
         setContentView(R.layout.activity_exercise_details);
         Intent intent = getIntent();
 
-        titletext=(TextView)findViewById(R.id.titletext);
+        titletext=(TextView)findViewById(R.id.exercise_title);
         titletext.setText(intent.getStringExtra("title"));
         thumb=(ImageView)findViewById(R.id.pose);
         Glide.with(this).load(intent.getStringExtra("img")).into(thumb);
@@ -66,6 +66,8 @@ public class ExerciseDetails extends AppCompatActivity {
 
 // Request an ad
         adView.loadAd();
+        startbtn.animate().translationX(-1).setDuration(1700).start();
+        timertxt.animate().alpha(1f).setDuration(2000).start();
 
 
 

@@ -84,7 +84,7 @@ public class Reminder extends AppCompatActivity {
         });
 
 
-        adView = new AdView(this, utils.getAdId(), AdSize.BANNER_HEIGHT_50);
+        adView = new AdView(this, utils.getAdId(), AdSize.BANNER_HEIGHT_90);
 
 // Find the Ad Container
         LinearLayout adContainer = (LinearLayout) findViewById(R.id.banner_container);
