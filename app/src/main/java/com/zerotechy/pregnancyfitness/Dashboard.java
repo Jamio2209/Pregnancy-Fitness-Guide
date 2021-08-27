@@ -16,8 +16,7 @@ import android.widget.LinearLayout;
 
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
-import com.facebook.ads.AdSize;
-import com.facebook.ads.AdView;
+
 import com.sanojpunchihewa.updatemanager.UpdateManager;
 import com.sanojpunchihewa.updatemanager.UpdateManagerConstant;
 
@@ -28,7 +27,7 @@ public class Dashboard extends AppCompatActivity {
 
     private MeowBottomNavigation bnv_Main;
     UpdateManager updateManager;
-    private AdView adView;
+//    private AdView adView;
     View v;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +35,7 @@ public class Dashboard extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
         updateManager=UpdateManager.Builder(this).mode(UpdateManagerConstant.FLEXIBLE);
         updateManager.start();
+
 
 
 
@@ -89,21 +89,27 @@ public class Dashboard extends AppCompatActivity {
         transaction.commit();
     }
 
+
+
+
     @Override
     public void onBackPressed() {
         AlertDialog.Builder builder =new AlertDialog.Builder(this);
         v=getLayoutInflater().inflate(R.layout.alertdialog,null);
 
-        adView = new AdView(this, utils.getAdId(), AdSize.BANNER_HEIGHT_90);
+//        adView = new AdView(this, utils.getAdId(), AdSize.BANNER_HEIGHT_90);
+//
+//// Find the Ad Container
+//        LinearLayout adContainer = (LinearLayout) v.findViewById(R.id.banner_container);
+//
+//// Add the ad view to your activity layout
+//        adContainer.addView(adView);
+//
+//// Request an ad
+//        adView.loadAd();
+//        final SdkConfiguration.Builder SdkConfiguration = new SdkConfiguration.Builder("");
+//        MoPub.initializeSdk(this, SdkConfiguration.build(), initSdkListener(v));
 
-// Find the Ad Container
-        LinearLayout adContainer = (LinearLayout) v.findViewById(R.id.banner_container);
-
-// Add the ad view to your activity layout
-        adContainer.addView(adView);
-
-// Request an ad
-        adView.loadAd();
 
         builder.setView(v);
         AlertDialog dialog=builder.create();

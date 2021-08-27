@@ -92,12 +92,12 @@
                 android:layout_height="@dimen/_35sdp"
                 android:layout_marginLeft="@dimen/_25sdp"
                 android:layout_marginTop="@dimen/_5sdp"
+                android:alpha="0"
                 android:background="@drawable/countbg"
                 android:fontFamily="@font/baskvill"
                 android:paddingTop="@dimen/_5sdp"
                 android:text="20"
                 android:textAlignment="center"
-                android:alpha="0"
                 android:textColor="#2B54A4"
 
                 android:textSize="@dimen/_22ssp"
@@ -113,21 +113,15 @@
                 android:background="@drawable/statbtnbg"
                 android:fontFamily="@font/baskvill"
                 android:text="Start"
-                android:translationX="@dimen/_220sdp"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_17sdp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:translationX="@dimen/_220sdp" />
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/banner_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
 
-            android:orientation="vertical"
 
-            />
 
     </LinearLayout>
 

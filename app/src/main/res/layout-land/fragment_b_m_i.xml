@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BMIFragment"
+    android:background="@drawable/bmibg">
+
+    <ImageView
+        android:id="@+id/bmic"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:layout_marginBottom="@dimen/_15sdp"
+        android:src="@drawable/ic_bmi"
+        app:tint="@color/white" />
+
+    <TextView
+        android:id="@+id/titlebold"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_24sdp"
+        android:layout_toRightOf="@+id/bmic"
+        android:fontFamily="@font/baskvill"
+        android:text="BMI Calculator"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_29ssp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Height"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:textSize="@dimen/_18sdp"
+        android:id="@+id/heighttxt"
+        android:fontFamily="@font/baskvill"
+        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/_85sdp"
+        />
+
+    <TextView
+        android:id="@+id/heightamount"
+        android:layout_width="@dimen/_90sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_below="@id/heighttxt"
+
+        android:layout_marginTop="@dimen/_20ssp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/amountbg"
+        android:fontFamily="@font/baskvill"
+        android:paddingTop="@dimen/_6sdp"
+        android:text="0 cm"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_15ssp"
+        android:textStyle="bold" />
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_20sdp"
+        android:id="@+id/heightbar"
+        android:layout_below="@id/heightamount"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:progressDrawable="@drawable/seekbar_bg"
+        android:max="100"
+        android:progress="50"
+        android:padding="@dimen/_10sdp"
+        android:indeterminate="false"
+        android:thumb="@drawable/seekthumb"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Weight"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:textSize="@dimen/_18sdp"
+        android:id="@+id/weighttxt"
+        android:layout_below="@id/heightbar"
+        android:fontFamily="@font/baskvill"
+        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/_25sdp"
+        />
+
+    <TextView
+        android:id="@+id/weightamount"
+        android:layout_width="@dimen/_90sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_below="@id/weighttxt"
+
+        android:layout_marginTop="@dimen/_20ssp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/amountbg"
+        android:fontFamily="@font/baskvill"
+        android:paddingTop="@dimen/_6sdp"
+        android:text="0 kg"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_15ssp"
+        android:textStyle="bold" />
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_20sdp"
+        android:id="@+id/weighttbar"
+        android:layout_below="@id/weightamount"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:progressDrawable="@drawable/seekbar_bg"
+        android:max="100"
+        android:progress="50"
+        android:padding="@dimen/_10sdp"
+        android:indeterminate="false"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:thumb="@drawable/seekthumb"
+        />
+<ImageView
+    android:layout_width="@dimen/_60sdp"
+    android:layout_height="@dimen/_60sdp"
+    android:src="@drawable/bmi_go"
+    android:layout_below="@+id/weighttbar"
+    android:layout_alignParentRight="true"
+    android:elevation="@dimen/_10sdp"
+    android:layout_marginEnd="@dimen/_20sdp"
+    android:layout_marginTop="@dimen/_35sdp"
+    android:id="@+id/bmigobtn"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Press Here"
+        android:layout_below="@id/bmigobtn"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:textSize="@dimen/_15ssp"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:fontFamily="@font/baskvill"
+        android:textColor="#2F54A3"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your BMI"
+        android:id="@+id/yourbmi"
+        android:fontFamily="@font/baskvill"
+        android:textSize="@dimen/_15ssp"
+        android:textColor="#2F54A3"
+
+        android:layout_below="@id/bmigobtn"
+        android:layout_marginTop="@dimen/_18sdp"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:textStyle="bold"/>
+
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/yourbmi"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:fontFamily="@font/baskvill"
+
+        android:text="23.5"
+
+        android:textAlignment="center"
+        android:textColor="#2F54A3"
+        android:textSize="@dimen/_50ssp" />
+
+
+
+
+
+
+
+
+
+</RelativeLayout>

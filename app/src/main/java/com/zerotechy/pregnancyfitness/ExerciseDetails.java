@@ -18,8 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.facebook.ads.AdSize;
-import com.facebook.ads.AdView;
+
 
 import java.io.IOException;
 
@@ -36,7 +35,7 @@ public class ExerciseDetails extends AppCompatActivity {
     private int second=20;
     CountDownTimer timer;
     SharedPreferences sharedPreferences;
-    private AdView adView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,16 +60,8 @@ public class ExerciseDetails extends AppCompatActivity {
         timertxt.setText(String.valueOf(sharedPreferences.getInt("value",20)));
 
 
-        adView = new AdView(this, utils.getAdId(), AdSize.BANNER_HEIGHT_50);
 
-// Find the Ad Container
-        LinearLayout adContainer = (LinearLayout) findViewById(R.id.banner_container);
 
-// Add the ad view to your activity layout
-        adContainer.addView(adView);
-
-// Request an ad
-        adView.loadAd();
         startbtn.animate().translationX(-1).setDuration(1700).start();
         timertxt.animate().alpha(1f).setDuration(2000).start();
 
@@ -145,6 +136,8 @@ public class ExerciseDetails extends AppCompatActivity {
         });
 
     }
+
+
 
     @Override
     public void onBackPressed() {

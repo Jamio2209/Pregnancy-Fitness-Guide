@@ -13,11 +13,6 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.facebook.ads.Ad;
-import com.facebook.ads.AdError;
-import com.facebook.ads.AudienceNetworkAds;
-import com.facebook.ads.InterstitialAd;
-import com.facebook.ads.InterstitialAdListener;
 
 import java.util.Formatter;
 
@@ -33,7 +28,7 @@ public class BMIFragment extends Fragment {
     SeekBar sheight,sweight;
     double heightvalue,weightvalue;
     boolean repeat=false;
-    private InterstitialAd interstitialAd;
+
 
 
 
@@ -75,7 +70,7 @@ public class BMIFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
-            AudienceNetworkAds.initialize(getContext());
+
         }
     }
 
@@ -84,7 +79,7 @@ public class BMIFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v=inflater.inflate(R.layout.fragment_b_m_i,container,false);
-        interstitialAd = new InterstitialAd(getContext(), utils.getInterstitialAdID());
+
         height=(TextView)v.findViewById(R.id.heightamount);
         weight=(TextView)v.findViewById(R.id.weightamount);
         yourbmi=(TextView)v.findViewById(R.id.yourbmi);yourbmi.setVisibility(View.INVISIBLE);
@@ -186,57 +181,57 @@ public class BMIFragment extends Fragment {
                         result.setVisibility(View.INVISIBLE);
                         yourbmi.setVisibility(View.INVISIBLE);
                         repeat=false;
-                        InterstitialAdListener interstitialAdListener = new InterstitialAdListener() {
-
-
-                            @Override
-                            public void onInterstitialDisplayed(Ad ad) {
-
-                            }
-
-                            @Override
-                            public void onInterstitialDismissed(Ad ad) {
-                                // Interstitial dismissed callback
-
-                            }
-
-                            @Override
-                            public void onError(Ad ad, AdError adError) {
-                                // Ad error callback
-//                                Toast.makeText(getContext(), adError.getErrorMessage(), Toast.LENGTH_SHORT).show();
-                            }
-
-
-
-                            @Override
-                            public void onAdLoaded(Ad ad) {
-                                // Interstitial ad is loaded and ready to be displayed
-                                Toast.makeText(getContext(), "Ad loaded", Toast.LENGTH_SHORT).show();
-                                // Show the ad
-                                interstitialAd.show();
-
-                            }
-
-                            @Override
-                            public void onAdClicked(Ad ad) {
-                                // Ad clicked callback
-
-                            }
-
-                            @Override
-                            public void onLoggingImpression(Ad ad) {
-
-                            }
-
-
-                        };
-
-                        // For auto play video ads, it's recommended to load the ad
-                        // at least 30 seconds before it is shown
-                        interstitialAd.loadAd(
-                                interstitialAd.buildLoadAdConfig()
-                                        .withAdListener(interstitialAdListener)
-                                        .build());
+//                        InterstitialAdListener interstitialAdListener = new InterstitialAdListener() {
+//
+//
+//                            @Override
+//                            public void onInterstitialDisplayed(Ad ad) {
+//
+//                            }
+//
+//                            @Override
+//                            public void onInterstitialDismissed(Ad ad) {
+//                                // Interstitial dismissed callback
+//
+//                            }
+//
+//                            @Override
+//                            public void onError(Ad ad, AdError adError) {
+//                                // Ad error callback
+////                                Toast.makeText(getContext(), adError.getErrorMessage(), Toast.LENGTH_SHORT).show();
+//                            }
+//
+//
+//
+//                            @Override
+//                            public void onAdLoaded(Ad ad) {
+//                                // Interstitial ad is loaded and ready to be displayed
+//                                Toast.makeText(getContext(), "Ad loaded", Toast.LENGTH_SHORT).show();
+//                                // Show the ad
+//                                interstitialAd.show();
+//
+//                            }
+//
+//                            @Override
+//                            public void onAdClicked(Ad ad) {
+//                                // Ad clicked callback
+//
+//                            }
+//
+//                            @Override
+//                            public void onLoggingImpression(Ad ad) {
+//
+//                            }
+//
+//
+//                        };
+//
+//                        // For auto play video ads, it's recommended to load the ad
+//                        // at least 30 seconds before it is shown
+//                        interstitialAd.loadAd(
+//                                interstitialAd.buildLoadAdConfig()
+//                                        .withAdListener(interstitialAdListener)
+//                                        .build());
                     }
 
 

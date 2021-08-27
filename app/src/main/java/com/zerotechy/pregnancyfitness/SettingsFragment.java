@@ -24,13 +24,6 @@ import android.widget.RadioGroup;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.facebook.ads.Ad;
-import com.facebook.ads.AdError;
-import com.facebook.ads.AdSize;
-import com.facebook.ads.AdView;
-import com.facebook.ads.AudienceNetworkAds;
-import com.facebook.ads.InterstitialAd;
-import com.facebook.ads.InterstitialAdListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -42,7 +35,7 @@ public class SettingsFragment extends Fragment{
     RadioGroup radioGroup;
     RadioButton radioButton;
     SharedPreferences sharedPreferences;
-    private InterstitialAd interstitialAd;
+
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -95,7 +88,7 @@ public class SettingsFragment extends Fragment{
         rate=(ImageView)v.findViewById(R.id.ratingbtn);
         about=(ImageView)v.findViewById(R.id.aboutbtn);
         privacy=(ImageView) v.findViewById(R.id.privacybtn);
-        AudienceNetworkAds.initialize(getContext());
+
 
 
         about.setOnClickListener(new View.OnClickListener() {
@@ -105,62 +98,7 @@ public class SettingsFragment extends Fragment{
             }
         });
 
-        Thread thread=new Thread(){
-            @Override
-            public void run() {
-                interstitialAd = new InterstitialAd(getContext(), utils.getInterstitialAdID());
 
-
-                InterstitialAdListener interstitialAdListener = new InterstitialAdListener() {
-
-
-                    @Override
-                    public void onInterstitialDisplayed(Ad ad) {
-                        // Interstitial ad displayed callback
-
-                    }
-
-                    @Override
-                    public void onInterstitialDismissed(Ad ad) {
-                        // Interstitial dismissed callback
-
-                    }
-
-
-                    @Override
-                    public void onError(Ad ad, AdError adError) {
-
-                    }
-
-                    @Override
-                    public void onAdLoaded(Ad ad) {
-                        // Interstitial ad is loaded and ready to be displayed
-
-                        // Show the ad
-                        interstitialAd.show();
-                    }
-
-                    @Override
-                    public void onAdClicked(Ad ad) {
-                        // Ad clicked callback
-
-                    }
-
-                    @Override
-                    public void onLoggingImpression(Ad ad) {
-                        // Ad impression logged callback
-
-                    }
-                };
-
-                // For auto play video ads, it's recommended to load the ad
-                // at least 30 seconds before it is shown
-                interstitialAd.loadAd(
-                        interstitialAd.buildLoadAdConfig()
-                                .withAdListener(interstitialAdListener)
-                                .build());
-            }
-        };
 
 
             rate.setOnClickListener(new View.OnClickListener() {

@@ -24,15 +24,8 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/_20sdp"
             android:src="@drawable/exiticon" />
-        <LinearLayout
-            android:id="@+id/banner_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/icon"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            />
+
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,7 +33,7 @@
             android:textColor="#2F54A3"
             android:text="Are you sure you want to quit? "
             android:fontFamily="@font/baskvill"
-            android:layout_below="@+id/banner_container"
+            android:layout_below="@+id/icon"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/_10sdp"
             android:textSize="@dimen/_15ssp"

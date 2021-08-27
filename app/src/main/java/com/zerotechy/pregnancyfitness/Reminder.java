@@ -17,8 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TimePicker;
 
-import com.facebook.ads.AdSize;
-import com.facebook.ads.AdView;
+
 
 import java.util.Calendar;
 
@@ -27,7 +26,7 @@ public class Reminder extends AppCompatActivity {
     Button reminder;
     Switch aSwitch;
     SharedPreferences sharedPreferences;
-    private AdView adView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,18 +83,12 @@ public class Reminder extends AppCompatActivity {
         });
 
 
-        adView = new AdView(this, utils.getAdId(), AdSize.BANNER_HEIGHT_90);
 
-// Find the Ad Container
-        LinearLayout adContainer = (LinearLayout) findViewById(R.id.banner_container);
 
-// Add the ad view to your activity layout
-        adContainer.addView(adView);
-
-// Request an ad
-        adView.loadAd();
 
     }
+
+
 
     public void startAlarm(Calendar c){
 

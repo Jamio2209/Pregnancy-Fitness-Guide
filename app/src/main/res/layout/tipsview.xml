@@ -12,14 +12,14 @@
         android:id="@+id/thumbnailcard"
         >
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/thumbnail"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_170sdp"
-                android:layout_gravity="center"
-                app:shapeAppearanceOverlay="@style/imageshape"
-                android:scaleType="fitXY"
-                android:layout_alignParentTop="true"/>
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/thumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_170sdp"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:scaleType="fitXY"
+            app:shapeAppearanceOverlay="@style/imageshape" />
 
 
     </RelativeLayout>

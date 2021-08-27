@@ -13,10 +13,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-//import com.facebook.ads.AdSize;
-//import com.facebook.ads.AdView;
-import com.facebook.ads.AdSize;
-import com.facebook.ads.AdView;
+
 import com.google.android.material.imageview.ShapeableImageView;
 
 import org.jetbrains.annotations.NotNull;
